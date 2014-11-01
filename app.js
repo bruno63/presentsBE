@@ -7,14 +7,32 @@ var express = require('express');
 var mongoose = require('mongoose');
 var baucis = require('baucis');
 var config = require('./config/config.js');
+var dbSchemaDesc = require('./config/dbSchemaDesc.js');
 var swagger = require('baucis-swagger');
 var testData = require('./test/testData.json');
 
 // Connect to the Mongo instance
-mongoose.connect(config.mongoUrl + config.itemName + '_v' + config.version);
+mongoose.connect(config.mongo.uri);
+
+mongoose.connection.on('connected', function() {
+  console.log('Mongoose connected to ' + config.mongo.uri);
+});
+mongoose.connection.on('error', function(err) {
+  console.log('Mongoose (' + config.mongo.uri + ') connection error: ' + err);
+});
+mongoose.connection.on('disconnected', function() {
+  console.log('Mongoose (' + config.mongo.uri + ') disconnected');
+});
+
+process.on('SIGINT', function() {
+  mongoose.connection.close(function() {
+    console.log('Mongoose (' + config.mongo.uri + ') disconnected through app termination');
+    process.exit(0);
+  });
+});
 
 // create a mongoose schema
-var dbSchema = new mongoose.Schema(config.dbSchemaDesc);
+var dbSchema = new mongoose.Schema(dbSchemaDesc);
 
 // optional Mongoose middleware
 dbSchema.pre('save', function (next) {

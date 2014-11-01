@@ -3,34 +3,25 @@
 module.exports = {
 	title: 'Presents',
 	description: 'A demo app logging presents',
-	port: process.env.PORT || 3333,
-	version: '2',
+	version: '3',
 	itemName: 'present',
 	collectionName: 'presents',
-	mongoUrl: 'mongodb://localhost:27017/',
-	dbSchemaDesc: 
-	{
-		datum: {
-			type: Date,
-			default: Date.now
-		},
-		from: {
-			type: String,
-			trim: true
-		},
-		to: {
-			type: String,
-			trim: true,
-			default: 'Geburtstag',
-			required: true
-		},
-		comment: {
-			type: String,
-			trim: true
-		},
-		type: {
-			type: String,
-			trim: true
-		}
+	
+	// Server IP
+	ip:     process.env.OPENSHIFT_NODEJS_IP ||
+            process.env.IP ||
+            undefined,
+
+	// Server port
+	port:   process.env.OPENSHIFT_NODEJS_PORT ||
+            process.env.PORT ||
+            3333,
+
+	// MongoDB connection options
+	mongo: {
+		uri:    process.env.MONGOLAB_URI ||
+				process.env.MONGOHQ_URL ||
+				process.env.OPENSHIFT_MONGODB_DB_URL+process.env.OPENSHIFT_APP_NAME ||
+				'mongodb://localhost:27017/' + collectionName + '_v' + version;
 	}
 };
