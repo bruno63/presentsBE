@@ -1,4 +1,4 @@
-# presentsBE2
+# presentsSvc - Presents Service
 
 This project is a blueprint backend application (storing presents) built using [baucis](https://github.com/wprl/baucis).
 It consists of
@@ -16,8 +16,8 @@ It consists of
 Application and MongoDB ports can be configured in config/config.js.
 
 ## Installation:
-    git clone https://github.com/DigiKMU/presentsBE2.git
-    cd presentsBE2
+    git clone https://github.com/DigiKMU/presentsSvc.git
+    cd presentsSvc
     npm install
     node app
 
