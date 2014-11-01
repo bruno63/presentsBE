@@ -22,6 +22,6 @@ module.exports = {
 		uri:    process.env.MONGOLAB_URI ||
 				process.env.MONGOHQ_URL ||
 				process.env.OPENSHIFT_MONGODB_DB_URL+process.env.OPENSHIFT_APP_NAME ||
-				'mongodb://localhost:27017/' + collectionName + '_v' + version;
+				'mongodb://localhost:27017/presents_v3'
 	}
 };
