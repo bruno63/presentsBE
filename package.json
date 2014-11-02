@@ -1,6 +1,6 @@
 {
-  "name": "presentsBE",
-  "version": "0.1.0",
+  "name": "presentsSvc",
+  "version": "0.2.0",
   "description": "A generalized rest interface for presents based on Baucis",
   "homepage": "http://www.bkaiser.ch",
   "repository": "",
