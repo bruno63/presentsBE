@@ -11,22 +11,20 @@ module.exports =
 		type: Date,
 		default: Date.now
 	},
-		from: {
+	from: {
 		type: String,
 		trim: true
 	},
 	to: {
 		type: String,
-		trim: true,
-		default: 'Geburtstag',
-		required: true
+		trim: true
 	},
 	comment: {
 		type: String,
 		trim: true
 	},
-	type: {
+	ptype: {
 		type: String,
-		trim: true
+		default: 'PTBirthday'
 	}
 };
